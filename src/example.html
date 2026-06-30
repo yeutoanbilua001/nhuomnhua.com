@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CPlayer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#f8f8f8" />
+</head>
+
+<body>
+    <div class="neko-container neko-no-gutters">
+        <div class="center">
+            <h1 class="title">cPlayer</h1>
+            <div>
+                <div class="neko-m-h-2 neko-m-v-2" style="display: inline-block" >
+                    <h3>默认样式</h3>
+                    <div id="app1"></div>
+                </div>
+                <div class="neko-m-h-2 neko-m-v-2" style="display: inline-block">
+                    <h3>暗黑样式</h3>
+                    <div id="app2"></div>
+                </div>
+            </div>
+            <div>
+                <div class="neko-m-h-2 neko-m-v-2" style="display: inline-block">
+                    <h3>大图样式</h3>
+                    <div id="app3"></div>
+                </div>
+                <div class="neko-m-h-2 neko-m-v-2" style="display: inline-block">
+                    <h3>大图暗黑样式</h3>
+                    <div id="app4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="neko-m-v-2 btn-line center">
+            <button class="neko-btn outline neko-color-blue" id="add163">从网易云添加音乐</button>
+            <button class="neko-btn outline neko-color-blue" id="openplaylist">打开播放列表</button>
+            <button class="neko-btn outline neko-color-blue" id="closeplaylist">关闭播放列表</button>
+            <button class="neko-btn outline neko-color-blue" id="remove">删除一首歌曲</button>
+            <a href="https://github.com/MoePlayer/cPlayer/blob/next/src/example.ts" rel="noopener" target="_blank"><button class="neko-btn outline neko-color-blue">查看此页面源代码</button></a>
+        </div>
+        <div class="neko-m-v-2 center">
+            <h1>Getting Started</h1>
+            <pre class="getstart neko-helper-center"><code class="html">&lt;div id="app"&gt;&lt;/div&gt;
+&lt;!-- 加载 cplayer 脚本 --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/MoePlayer/cPlayer/dist/cplayer.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  let player = new cplayer({
+    element: document.getElementById('app'),
+    playlist: [
+      {
+        src: '歌曲资源链接...',
+        poster: '封面链接...',
+        name: '歌曲名称...',
+        artist: '歌手名称...',
+        lyric: '歌词...',
+        sublyric: '副歌词，一般为翻译...'
+      },
+      {
+        ...
+      },
+      ......
+    ]
+  })
+&lt;/script&gt;</code></pre>
+        </div>
+        <div class="neko-m-v-2 btn-line center">
+            <a href="https://github.com/MoePlayer/cPlayer" rel="noopener" target="_blank"><button class="neko-btn shadow neko-color-blue">更多详情..</button></a>
+        </div>
+    </div>
+    <a href="https://github.com/MoePlayer/cPlayer" rel="noopener" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="./example/fork-me-at-github.png" alt="Fork me on GitHub"></a>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            background-repeat: repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+            background-origin: padding-box;
+            background-attachment: scroll;
+            padding: 50px 0px;
+            margin: 0px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        .btn-line .neko-btn {
+            margin: 10px 8px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 55px;
+        }
+
+        pre.getstart {
+            width: 600px;
+            text-align: left;
+        }
+
+        pre.getstart code {
+            border-radius: 5px;
+        }
+
+        @media screen and (max-width:600px) {
+            pre.getstart {
+                width: auto;
+                margin: 0px 20px;
+            }
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SÓNG — Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Blurred background art -->
+  <div class="bg-art" id="bgArt"></div>
+  <div class="bg-overlay"></div>
+
+  <!-- Player card -->
+  <div class="player-card">
+
+    <!-- Album art -->
+    <div class="cover-wrap">
+      <img class="cover-img" id="coverImg" src="assets/covers/cover1.jpg" alt="Album cover" />
+      <div class="cover-spin-ring"></div>
+    </div>
+
+    <!-- Track info -->
+    <div class="track-info">
+      <h1 class="track-title" id="trackTitle">Loading…</h1>
+      <p class="track-artist" id="trackArtist">—</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-section">
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="time-row">
+        <span class="time" id="timeCurrent">0:00</span>
+        <span class="time" id="timeTotal">0:00</span>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="ctrl-btn side-btn" id="shuffleBtn" title="Shuffle">
+        <!-- shuffle icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 3 21 3 21 8"/><polyline points="3 16 3 21 8 21"/>
+          <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+          <polyline points="8 3 3 3 3 8"/><line x1="3" y1="3" x2="10" y2="10"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn" id="prevBtn" title="Previous">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn play-btn" id="playBtn" title="Play / Pause">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn" id="nextBtn" title="Next">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 18l8.5-6L6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2z"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn side-btn" id="repeatBtn" title="Repeat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+          <polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Volume -->
+    <div class="volume-row">
+      <svg class="vol-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+      </svg>
+      <div class="volume-bar" id="volumeBar">
+        <div class="volume-fill" id="volumeFill" style="width:75%"></div>
+      </div>
+      <svg class="vol-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77 0-4.28-2.99-7.86-7-8.77z"/>
+      </svg>
+    </div>
+
+    <!-- Playlist -->
+    <div class="playlist-section">
+      <div class="playlist-header">
+        <span class="playlist-label">Playlist</span>
+        <span class="playlist-count" id="playlistCount">3 songs</span>
+      </div>
+      <ul class="playlist" id="playlist"></ul>
+    </div>
+
+  </div><!-- end .player-card -->
+
+  <audio id="audioEl" preload="auto"></audio>
+  <script src="player.js"></script>
+</body>
+</html>

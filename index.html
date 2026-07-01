@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Blurred art background — filled by JS -->
+  <div class="bg" id="bg"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="card">
+
+    <!-- ── Album art ── -->
+    <div class="art-wrap">
+      <img id="artImg" class="art-img" src="" alt="Album cover" />
+      <div class="art-ring"></div>
+    </div>
+
+    <!-- ── Song info ── -->
+    <div class="info">
+      <h1 class="song-title" id="songTitle">—</h1>
+      <p  class="song-artist" id="songArtist">—</p>
+    </div>
+
+    <!-- ── Progress ── -->
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="times">
+        <span id="timeCurrent">0:00</span>
+        <span id="timeTotal">0:00</span>
+      </div>
+    </div>
+
+    <!-- ── Controls ── -->
+    <div class="controls">
+      <!-- Shuffle -->
+      <button class="btn btn-sm" id="btnShuffle" title="Shuffle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 3 21 3 21 8"/>
+          <line x1="21" y1="3" x2="14" y2="10"/>
+          <polyline points="8 3 3 3 3 8"/>
+          <line x1="3" y1="3" x2="10" y2="10"/>
+          <polyline points="3 16 3 21 8 21"/>
+          <line x1="3" y1="21" x2="10" y2="14"/>
+          <polyline points="16 21 21 21 21 16"/>
+          <line x1="21" y1="21" x2="14" y2="14"/>
+        </svg>
+      </button>
+
+      <!-- Prev -->
+      <button class="btn btn-md" id="btnPrev" title="Previous">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+        </svg>
+      </button>
+
+      <!-- Play / Pause -->
+      <button class="btn btn-play" id="btnPlay" title="Play">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+
+      <!-- Next -->
+      <button class="btn btn-md" id="btnNext" title="Next">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 18l8.5-6L6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2z"/>
+        </svg>
+      </button>
+
+      <!-- Repeat -->
+      <button class="btn btn-sm" id="btnRepeat" title="Repeat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="17 1 21 5 17 9"/>
+          <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+          <polyline points="7 23 3 19 7 15"/>
+          <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ── Volume ── -->
+    <div class="volume-row">
+      <svg class="vol-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+      </svg>
+      <div class="vol-bar" id="volBar">
+        <div class="vol-fill" id="volFill"></div>
+      </div>
+      <svg class="vol-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+      </svg>
+    </div>
+
+    <!-- ── Playlist ── -->
+    <div class="playlist-wrap">
+      <div class="playlist-header">
+        <span class="playlist-label">Playlist</span>
+        <span class="playlist-count" id="playlistCount"></span>
+      </div>
+      <ul class="playlist" id="playlist"></ul>
+    </div>
+
+  </div><!-- /.card -->
+
+  <audio id="audio" preload="auto"></audio>
+
+  <!--
+    covers.js loads BEFORE player.js.
+    It stores all cover images as base64 text so they work
+    when you open index.html directly (no server needed).
+  -->
+  <script src="covers.js"></script>
+  <script src="player.js"></script>
+</body>
+</html>
